@@ -6,7 +6,7 @@ locals {
       "${vpc_name}_${router_name}" => merge(
         router_config,
         { "project_id" = vpc_details.project_id },
-        { "vpc_name" = vpc_details.name }
+        { "vpc_name" = vpc_name }
       )
     }
   ]...)
