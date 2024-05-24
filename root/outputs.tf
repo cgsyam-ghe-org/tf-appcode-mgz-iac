@@ -1,5 +1,5 @@
 output "vpc" {
-  value = module.vpcs
+  value = module.vpc
 }
 
 output "nat" {
