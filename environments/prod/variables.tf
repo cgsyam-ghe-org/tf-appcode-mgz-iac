@@ -11,7 +11,7 @@ variable "network_configs" {
       min_ports_per_vm                    = optional(number)
       max_ports_per_vm                    = optional(number)
       log_config_enable                   = optional(bool, true)
-      log_config_filter                   = optional(string)
+      log_config_filter                   = optional(string, "ALL")
     }))
     vpc = optional(map(object({
       project_id                             = string
