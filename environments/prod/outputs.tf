@@ -1,3 +1,3 @@
-output "devops_vpc" {
-  value = module.devops_vpc
+output "mgz" {
+  value = module.mgz
 }
