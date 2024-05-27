@@ -32,7 +32,7 @@ network_configs = {
           {
             range_name    = "secrange-devops-prod-pods-uc1"
             ip_cidr_range = "100.90.0.0/16"
-          }
+          },
           {
             range_name    = "secrange-devops-prod-svc-uc1"
             ip_cidr_range = "100.91.0.0/16"
