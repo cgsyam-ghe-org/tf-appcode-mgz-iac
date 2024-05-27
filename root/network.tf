@@ -14,7 +14,7 @@ locals {
 
 module "nat" {
   source                              = "terraform-google-modules/cloud-nat/google"
-  version                             = "~> 5.0.0"
+  version                             = "5.0.0"
   for_each                            = var.network_configs.cloud_nat
   project_id                          = each.value.project_id
   region                              = each.value.region
@@ -31,7 +31,7 @@ module "nat" {
 
 module "router" {
   source   = "terraform-google-modules/cloud-router/google"
-  version  = "~> 6.0"
+  version  = "6.0"
   for_each = local.routers
   name     = each.value.name
   project  = each.value.project_id
@@ -41,7 +41,7 @@ module "router" {
 
 module "vpc" {
   source                                 = "terraform-google-modules/network/google"
-  version                                = "~> 9.1"
+  version                                = "9.1"
   for_each                               = var.network_configs.vpc
   project_id                             = each.value.project_id
   network_name                           = each.value.name
