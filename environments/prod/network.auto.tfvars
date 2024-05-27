@@ -28,7 +28,7 @@ network_configs = {
         }
       ]
       secondary_ranges = {
-        subnet-devops-uc1 = [
+        subnet-devops-prod-uc1 = [
           {
             range_name    = "secrange-devops-prod-pods-uc1"
             ip_cidr_range = "100.90.0.0/16"
