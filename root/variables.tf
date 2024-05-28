@@ -18,6 +18,7 @@ variable "network_configs" {
       name                                   = string
       routing_mode                           = string
       delete_default_internet_gateway_routes = bool
+      shared_vpc_host                        = bool
       subnets = list(object(
         {
           subnet_name               = string,
@@ -33,12 +34,36 @@ variable "network_configs" {
         })
       )
       secondary_ranges = map(list(object({ range_name = string, ip_cidr_range = string })))
-      shared_vpc_host  = bool
       routers = optional(map(object({
         name   = string
         region = string
 
       })), {})
+      routes = optional(list(map(string)), [])
+      firewall_rules = list(object({
+        name                    = string
+        description             = optional(string, null)
+        direction               = optional(string, "INGRESS")
+        disabled                = optional(bool, null)
+        priority                = optional(number, null)
+        ranges                  = optional(list(string), [])
+        source_tags             = optional(list(string))
+        source_service_accounts = optional(list(string))
+        target_tags             = optional(list(string))
+        target_service_accounts = optional(list(string))
+
+        allow = optional(list(object({
+          protocol = string
+          ports    = optional(list(string))
+        })), [])
+        deny = optional(list(object({
+          protocol = string
+          ports    = optional(list(string))
+        })), [])
+        log_config = optional(object({
+          metadata = string
+        }))
+      }))
     })), {})
   })
 }
