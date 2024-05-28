@@ -45,6 +45,29 @@ network_configs = {
           region = "us-central1"
         }
       }
+      routes = [
+        {
+          name              = "route-devops-prod-intgwy"
+          description       = ""
+          destination_range = "0.0.0.0/0"
+          tags              = ""
+          next_hop_internet = "true"
+        }
+      ]
+      firewall_rules = [
+        {
+          name               = "fwr-devops-prod-egr-allow-default"
+          description        = "default egress allow"
+          direction          = "EGRESS"
+          priority           = 65534
+          destination_ranges = ["0.0.0.0/0"]
+          allow = [{
+            protocol = "all"
+            ports    = []
+          }]
+          deny = []
+        }
+      ]
     }
   }
 }

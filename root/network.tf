@@ -51,3 +51,21 @@ module "vpc" {
   subnets                                = each.value.subnets
   secondary_ranges                       = each.value.secondary_ranges
 }
+
+module "routes" {
+  source       = "terraform-google-modules/network/google//modules/routes"
+  version      = "9.1.0"
+  for_each     = var.network_configs.vpc
+  project_id   = each.value.project_id
+  network_name = module.vpc[each.key].network_name
+  routes       = each.value.routes
+}
+
+module "firewall_rules" {
+  source       = "terraform-google-modules/network/google//modules/firewall-rules"
+  version      = "9.1.0"
+  for_each     = var.network_configs.vpc
+  project_id   = each.value.project_id
+  network_name = module.vpc[each.key].network_name
+  rules        = each.value.firewall_rules
+}
