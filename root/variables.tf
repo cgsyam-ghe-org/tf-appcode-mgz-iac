@@ -1,18 +1,6 @@
 variable "network_configs" {
   description = "Management zone config"
   type = object({
-    cloud_nat = map(object({
-      project_id                          = string
-      region                              = string
-      name                                = string
-      router                              = string
-      enable_dynamic_port_allocation      = optional(bool)
-      enable_endpoint_independent_mapping = optional(bool)
-      min_ports_per_vm                    = optional(number)
-      max_ports_per_vm                    = optional(number)
-      log_config_enable                   = optional(bool)
-      log_config_filter                   = optional(string)
-    }))
     vpc = optional(map(object({
       project_id                             = string
       name                                   = string

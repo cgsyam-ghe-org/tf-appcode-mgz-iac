@@ -1,8 +1,4 @@
-/*
-# Example
-
 provider "google" {
-  project     = "my-prod-project-id"
-  region      = "us-central1"
+  project = "prj-appcode-mgz-prod-5904"
+  region  = "us-central1"
 }
-*/
