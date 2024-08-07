@@ -1,13 +1,5 @@
 
 network_configs = {
-  cloud_nat = {
-    devops-prod-uc1 = {
-      project_id = "prj-appcode-mgz-prod-5904"
-      router     = "router-devops-prod-uc1"
-      name       = "nat-devops-prod-uc1"
-      region     = "us-central1"
-    }
-  }
   vpc = {
     devops-prod = {
       project_id                             = "prj-appcode-mgz-prod-5904"
@@ -45,15 +37,7 @@ network_configs = {
           region = "us-central1"
         }
       }
-      routes = [
-        {
-          name              = "route-devops-prod-intgwy"
-          description       = ""
-          destination_range = "0.0.0.0/0"
-          tags              = ""
-          next_hop_internet = "true"
-        }
-      ]
+      routes = []
       firewall_rules = [
         {
           name               = "fwr-devops-prod-egr-allow-default"

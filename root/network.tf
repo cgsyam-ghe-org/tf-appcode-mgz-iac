@@ -12,23 +12,6 @@ locals {
   ]...)
 }
 
-module "nat" {
-  source                              = "terraform-google-modules/cloud-nat/google"
-  version                             = "5.0.0"
-  for_each                            = var.network_configs.cloud_nat
-  project_id                          = each.value.project_id
-  region                              = each.value.region
-  router                              = each.value.router
-  name                                = each.value.name
-  enable_dynamic_port_allocation      = each.value.enable_dynamic_port_allocation
-  enable_endpoint_independent_mapping = each.value.enable_endpoint_independent_mapping
-  min_ports_per_vm                    = each.value.min_ports_per_vm
-  max_ports_per_vm                    = each.value.max_ports_per_vm
-  log_config_enable                   = each.value.log_config_enable
-  log_config_filter                   = each.value.log_config_filter
-  depends_on                          = [module.router]
-}
-
 module "router" {
   source   = "terraform-google-modules/cloud-router/google"
   version  = "6.0"
